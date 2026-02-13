@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; font-family: -apple-system, sans-serif; color: white; }
+        .glass-card {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 40px 20px; border-radius: 25px; border: 2px solid #ff4d6d;
+            text-align: center; width: 85%; max-width: 350px; z-index: 10;
+        }
+        .days-num { font-size: 3.5rem; font-weight: bold; color: #ff4d6d; display: block; margin: 10px 0; }
+        .btn { background: #ff4d6d; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; display: inline-block; margin-top: 20px; font-weight: bold; }
+        .bg-heart { position: absolute; color: rgba(255, 77, 109, 0.3); font-size: 20px; z-index: 1; animation: fall 4s linear infinite; }
+        @keyframes fall { from { transform: translateY(-10vh); } to { transform: translateY(110vh); } }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>Hi Manali ❤️</h1>
+        <p>We have been together for</p>
+        <span class="days-num" id="dayCount">...</span>
+        <p>beautiful days.</p>
+        <a href="galaxy.html" class="btn">Enter Our Galaxy</a>
+    </div>
+
+<script>
+    function calcDays() {
+        const startDate = new Date(2019, 4, 26); // May 26, 2019
+        const today = new Date();
+        const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+        document.getElementById('dayCount').innerText = diff;
+    }
+    calcDays();
+
+    setInterval(() => {
+        const h = document.createElement('div');
+        h.className = 'bg-heart'; h.innerHTML = '❤️';
+        h.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 4000);
+    }, 500);
+</script>
+</body>
+</html>
